@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="gb2312" standalone="yes" ?>
+<configurations checksum="0xFFFFFFFF">
+    <configuration ap_platform="boston" modem_platform="N/A" product_id="N/A" version="N/A" checked="NO">
+        <update_solution_version>
+            <solution_ver>1.0</solution_ver>
+        </update_solution_version>
+        <bootloaderimage checksum = "0xFFFFFFFF">
+            <image name = "XLOADER" address = "0x00022000" identifier = "xloader" write_delay_ms="5000">sec_usb_xloader.img</image>
+            <image name = "UCE" address = "0x60049000" identifier = "uce" write_delay_ms="5000">sec_usb_xloader2.img</image>
+            <image name = "FASTBOOT" address = "0x16800000" identifier = "fastboot" write_delay_ms="1000">l-loader.bin</image>
+        </bootloaderimage>
+        <earlier_commands>
+            <!--仅支持fastboot格式命令，工具仅按顺序透传content内的字符串，没有可不配置，注意擦除命令需要在erase后加“:”跟分区名称-->
+        </earlier_commands>
+        <fastbootimage checksum="0xFFFFFFFF">
+            <image name="XLOADER" address = "0xFFFFFFFF" identifier = "xloader">sec_xloader.img</image>
+            <image name="PTABLE" address="0xFFFFFFFF" identifier="ptable">prm_ptable.img</image>
+            <image name="FIP" address="0xFFFFFFFF" identifier="fip">fip.bin</image>
+            <image name="FASTBOOT" address="0xFFFFFFFF" identifier="fastboot">l-loader.bin</image>
+            <image name="BOOT" address="0xFFFFFFFF" identifier="boot">boot.img</image>
+            <!--<image name="NVME" address="0xFFFFFFFF" identifier="nvme">nvme.img</image>
+            <image name="TRUSTFIRMWARE" address="0xFFFFFFFF" identifier="trustfirmware">bl31.bin</image>-->
+            <image name="CACHE" address="0xFFFFFFFF" identifier="cache">cache.img</image>
+            <image name="SYSTEM" address="0xFFFFFFFF" identifier="system">system.img</image>
+            <image name="USERDATA" address="0xFFFFFFFF" identifier="userdata">userdata.img</image>
+        </fastbootimage>
+        <modemimage checksum="0xFFFFFFFF">
+            <!--预留第三方Modem镜像，方便以后扩展，注意: SOC情况下Modem镜像写到fastbootimage中-->
+        </modemimage>
+        <later_commands>
+            <!--仅支持fastboot格式命令，工具仅按顺序透传content内的字符串，没有可不配置，注意擦除命令需要在erase后加“:”跟分区名称-->
+        </later_commands>
+    </configuration>
+</configurations>
