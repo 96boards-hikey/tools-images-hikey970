@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 DEVICE=$1
 IMG_FOLDER=${PWD}
 
