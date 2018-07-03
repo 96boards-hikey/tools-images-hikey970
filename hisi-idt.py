@@ -85,7 +85,7 @@ class bootdownload(object):
 
     def __init__(self,chiptype,serialport):
         try:
-            self.s = serial.Serial(port=serialport, baudrate=115200, timeout=1)
+            self.s = serial.Serial(dsrdtr=True, rtscts=True, port=serialport, baudrate=115200, timeout=1)
         except serial.serialutil.SerialException:
             #no serial connection
             self.s = None
